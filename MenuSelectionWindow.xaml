@@ -1,0 +1,24 @@
+﻿<Window x:Class="KioskAppServer.MenuSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KioskAppServer"
+        mc:Ignorable="d"
+        Title="MenuSelectionWindow" Height="300" Width="300">
+    <StackPanel>
+        <TextBlock Text="카테고리에 추가될 메뉴를 선택하세요" Margin="10" HorizontalAlignment="Center"/>
+        <ListBox x:Name="MenuListBox" ItemsSource="{Binding MenuList}" SelectedItem="{Binding SelectedMenu, Mode=TwoWay}" HorizontalAlignment="Center" Width="200" Height="180">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="0,0,10,0"/>
+                        <TextBlock Text="{Binding Price, StringFormat='₩{0:N0}'}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button x:Name="ConfirmButton" Content="확인" Command="{Binding ConfirmCommand}" Width="50" Margin="10"/>
+    </StackPanel>
+</Window>
